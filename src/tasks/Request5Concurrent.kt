@@ -4,7 +4,7 @@ import contributors.*
 import kotlinx.coroutines.*
 
 suspend fun loadContributorsConcurrent(service: GitHubService, req: RequestData): List<User> = coroutineScope {
-    val repos = service.getOrgRepos(req.org) // Executes request and blocks the current thread
+    val repos = service.getOrgRepos(req.org)
         .also { logRepos(req, it) }
         .body() ?: listOf()
 
